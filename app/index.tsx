@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "expo-router";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -28,6 +29,8 @@ const recommendations = [
     jobDetails: "Junior . Fulltime . On-site",
     payment: "$6k/month",
   },
+
+  
 ];
 
 const recentJobs = [
@@ -41,7 +44,7 @@ const recentJobs = [
   },
 ];
 
-const renderRecommendationItem = ({ item }) => (
+const renderRecommendationItem = ({ item, navigation }: { item: { id: string; company: string; companyImage: string; jobTitle: string; jobDetails: string; payment: string; }, navigation: any }) => (
   <View style={styles.card}>
     <View style={styles.cardHeader}>
       <View style={styles.cardLeft}>
@@ -56,15 +59,18 @@ const renderRecommendationItem = ({ item }) => (
     <Text style={styles.jobTitle}>{item.jobTitle}</Text>
     <Text style={styles.jobDetails}>{item.jobDetails}</Text>
     <View style={styles.cardFooter}>
-      <TouchableOpacity style={styles.applyButton}>
-        <Text style={styles.applyText}>Apply Now</Text>
-      </TouchableOpacity>
+      <TouchableOpacity
+      style={styles.applyButton}
+      onPress={() => navigation.navigate("ApplyForJob")}
+    >
+      <Text style={styles.applyText}>Apply Now</Text>
+    </TouchableOpacity>
       <Text style={styles.payment}>{item.payment}</Text>
     </View>
   </View>
 );
 
-const renderRecentJobItem = ({ item }) => (
+const renderRecentJobItem = ({ item }: { item: { id: string; company: string; jobTitle: string; workStyle: string; timeAgo: string; payment: string; } }) => (
   <View style={styles.recentJobCard}>
     <View style={styles.recentJobHeader}>
       <Image source={{ uri: "https://th.bing.com/th/id/R.16597b58fb4d4fa8ebcf5a013fc19b0a?rik=a0DcRRp3bMzLow&pid=ImgRaw&r=0" }} style={styles.recentCompanyImage} />
@@ -80,7 +86,7 @@ const renderRecentJobItem = ({ item }) => (
   </View>
 );
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }: { navigation: any }) {
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.header}>
@@ -102,7 +108,7 @@ export default function HomeScreen() {
 
       <FlatList
         data={recommendations}
-        renderItem={renderRecommendationItem}
+        renderItem={(item) => renderRecommendationItem({ ...item, navigation })}
         keyExtractor={(item) => item.id}
         horizontal
         showsHorizontalScrollIndicator={false}

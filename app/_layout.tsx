@@ -6,14 +6,14 @@ export default function Layout() {
     <Tabs
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
-          let iconName;
+          let iconName: keyof typeof FontAwesome.glyphMap = "home";
 
           if (route.name === "index") {
             iconName = "home"; // 🏠 Home Icon
           } else if (route.name === "analytics") {
             iconName = "bar-chart"; // 📊 Analytics Icon
           } else if (route.name === "favorites") {
-            iconName = "heart"; // ❤️ Favorites Icon
+            iconName = "heart"; // 
           } else if (route.name === "account") {
             iconName = "user"; // 👤 Account Icon
           }
