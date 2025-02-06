@@ -18,7 +18,8 @@ Smooth navigation with intuitive user experience
 ✅ Bookmark and save jobs for later
 ✅ Search and filter jobs easily
 
-📸 Screenshots
+
+
 Home Screen	Job Details	Search & Filter
 🚀 Getting Started
 1️⃣ Clone the Repository
