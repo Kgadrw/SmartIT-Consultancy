@@ -17,7 +17,9 @@ Smooth navigation with intuitive user experience
 ✅ Responsive design with CSS-powered styling
 ✅ Bookmark and save jobs for later
 ✅ Search and filter jobs easily
+screenshot
 
+![WhatsApp Image 2025-02-06 at 23 44 35_61e463ae](https://github.com/user-attachments/assets/8fa53d18-3dbd-4389-8a66-7332e07a4c77)
 
 
 Home Screen	Job Details	Search & Filter
